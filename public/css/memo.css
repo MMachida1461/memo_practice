@@ -6,3 +6,24 @@ h1 {
 a{
     color: blue;
 }
+
+textarea{
+    height: 500px;
+    width: 500px;
+    display: block;
+
+}
+
+.form-area{
+    position: relative;
+}
+
+#form-area-submit{
+    padding: 20px 40px;
+    color: blue;
+    font-weight: bold;
+    position: absolute;
+    /* top: 550px; */
+    left: 600px;
+    top: 100px;
+}
