@@ -11,8 +11,8 @@ class MemoController extends Controller
     //メモ一覧画面へ遷移させる
     public function index() {
         $memos = Memo::all();
-        var_dump($memos);
-        return view('memo');
+        // var_dump($memos);
+        return view('memo')->with('memos',$memos);
     }
 
     ///memo/createのパスで渡ってきたら、detail.blade.phpを作成

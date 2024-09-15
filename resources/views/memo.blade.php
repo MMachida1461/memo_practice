@@ -12,16 +12,12 @@
     {{-- ダミーのメモ一覧 start --}}
     <h1 class="h1">メモ一覧</h1>
     <ul>
-        <li><a href="#">メモ1</a></li>
-        <li><a href="#">メモ2</a></li>
-        <li><a href="#">メモ3</a></li>
-        <li><a href="#">メモ4</a></li>
-        <li><a href="#">メモ5</a></li>
-        <li><a href="#">メモ6</a></li>
-        <li><a href="#">メモ7</a></li>
-        <li><a href="#">メモ8</a></li>
-        <li><a href="#">メモ9</a></li>
-        <li><a href="#">メモ10</a></li>
+    <ul>
+        @foreach($memos as $memo)
+            <li>
+                <a href="#">{{$memo->memo}}</a>
+            </li>   
+        @endforeach
     </ul>
     {{-- ダミーのメモ一覧 end --}}
 </body>
