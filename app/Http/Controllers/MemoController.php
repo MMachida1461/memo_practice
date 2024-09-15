@@ -15,9 +15,12 @@ class MemoController extends Controller
         return view('memo')->with('memos',$memos);
     }
 
-    ///memo/createのパスで渡ってきたら、detail.blade.phpを作成
+    ///memo/detailで各メモのidごとにメモの全文を表示するための処理
     public function getMemo() {
-        Log::debug("web.appからメソッドが呼び出されていることを確認");
-        return view('detail');
+        //Getでメモのidを取得
+        $memo_id = $_GET["id"];
+        $memo_detail = Memo::find($memo_id);
+        // Log::debug("web.appからメソッドが呼び出されていることを確認");
+        return view('detail')->with('memos_detail',$memo_detail->memo);
     }
 }

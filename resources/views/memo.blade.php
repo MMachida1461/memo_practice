@@ -15,7 +15,7 @@
     <ul>
         @foreach($memos as $memo)
             <li>
-                <a href="#">{{$memo->memo}}</a>
+                <a href="memo/detail?id={{$memo->id}}" value=>{{$memo->memo}}</a>
             </li>   
         @endforeach
     </ul>
