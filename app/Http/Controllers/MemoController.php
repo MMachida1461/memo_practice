@@ -23,4 +23,9 @@ class MemoController extends Controller
         // Log::debug("web.appからメソッドが呼び出されていることを確認");
         return view('detail')->with('memos_detail',$memo_detail->memo);
     }
+
+    //メモ登録画面への遷移
+    public function create_view() {
+        return view('create');
+    }
 }

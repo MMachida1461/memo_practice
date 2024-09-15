@@ -10,8 +10,5 @@ Route::get('/memo', [MemoController::class, 'index']);
 // メモをDBから取得するページの作成
 Route::get('/memo/detail', [MemoController::class, 'getMemo']);
 
-
-//まずは、idで呼び出した時のダミーのページを呼び出す処理を作成
-Route::get('/memo/create', function(){
-    return view('create');
-});
+//メモ登録画面
+Route::get('/memo/create', [MemoController::class, 'create_view']);
