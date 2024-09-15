@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Memo;
+use Illuminate\Support\Facades\DB;
 
 class MemoController extends Controller
 {
@@ -27,5 +28,15 @@ class MemoController extends Controller
     //メモ登録画面への遷移
     public function create_view() {
         return view('create');
+    }
+
+    // メモ登録処理
+    public function create(Request $request) {
+        $param = [
+            'memo' => $request->memo //formから渡ってきたname=memoの部分
+        ];
+        //insertを使用し、DBに登録
+        DB::insert('insert into memos (memo, created_at, updated_at) values (:memo, NOW(), NOW())', $param);
+        return to_route('memo');
     }
 }

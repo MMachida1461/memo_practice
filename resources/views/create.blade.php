@@ -9,9 +9,10 @@
     <title>メモ</title>
 </head>
 <body>
-    <h1 class="h1">メモ追加</h1>
-    <form action="" class="form-area"></form>
-        <textarea name="memo" id="" cols="30" rows="10"></textarea>
+    <h1>メモ追加</h1>
+    <form action="{{route('create')}}" method="post" class="form-area">
+        @csrf
+        <textarea name="memo" cols="30" rows="10"></textarea>
         <input type="submit" value="作成" id="form-area-submit">
     </form>
 </body>

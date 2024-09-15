@@ -9,8 +9,7 @@
     <title>メモ</title>
 </head>
 <body>
-    {{-- ダミーのメモ一覧 start --}}
-    <h1 class="h1">メモ一覧</h1>
+    <h1>メモ一覧</h1>
     <ul>
     <ul>
         @foreach($memos as $memo)
@@ -19,6 +18,7 @@
             </li>   
         @endforeach
     </ul>
-    {{-- ダミーのメモ一覧 end --}}
+
+    <a href="/memo/create" class="memo_create">メモを新規作成</a>
 </body>
 </html>
