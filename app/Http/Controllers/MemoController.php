@@ -19,14 +19,19 @@ class MemoController extends Controller
 
     ///memo/detailで各メモのidごとにメモの全文を表示するための処理
     public function getMemo(Request $request) {
+        // 意図しない値が入れられないように修正
+        $request->validate([
+            'id' => 'required|integer',
+        ]);
+
         //queryメソッドを使用し、Requestのidを取得
         $memo_id = $request->query('id');
-        $memo_detail = Memo::find($memo_id);
+        $memo_detail = Memo::findOrFail($memo_id);
         
         Log::debug($memo_detail);
         //idのデータがDB上にない時、メモ一覧へ遷移させる
         if(!$memo_detail){
-            return redirect()->route('memo')->with('error','Memo not fund');
+            return redirect()->route('memo')->with('error','Memo not found');
         }
         return view('detail')->with('memos_detail',$memo_detail->memo);
     }
