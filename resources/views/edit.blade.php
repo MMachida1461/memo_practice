@@ -10,9 +10,10 @@
 </head>
 <body>
     <p>メモ編集</p>
-    <form action="{{route('create')}}" method="post" class="form-area">
+    <form action="{{route('edit')}}" method="post" class="form-area">
         @csrf
         <textarea name="memo" cols="30" rows="10">{{ $memos_edit->memo }}</textarea>
+        <input type="hidden" name="memo_id" value="{{ $memos_edit->id }}">
         <input type="submit" value="更新" id="form-area-submit">
     </form>
 </body>

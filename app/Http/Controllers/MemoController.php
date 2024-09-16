@@ -20,8 +20,6 @@ class MemoController extends Controller
     ///memo/detailで各メモのidごとにメモの全文を表示するための処理
     public function getMemo(Request $request) {
         // 意図しない値が入れられないように修正
-
-        Log::debug($request);
         $request->validate([
             'id' => 'required|integer',
         ]);
@@ -39,8 +37,6 @@ class MemoController extends Controller
 
     //メモ編集画面への遷移
     public function edit_view(Request $request) {
-
-        // Log::debug($request);
         // 意図しない値が入れられないように修正
         $request->validate([
             'id' => 'required|integer',
@@ -58,8 +54,26 @@ class MemoController extends Controller
     }
 
     //メモ更新処理
-    public function update(Request $request){
-        
+    public function edit(Request $request){
+
+        // validateメソッドでmemoの値をチェック
+        $request->validate([
+            'memo' => 'required|max:1000',
+        ]);
+
+        // updateメソッドでDBに値を挿入
+        $updateMemo = Memo::find($request->memo_id);  
+
+        Log::debug($updateMemo);
+
+
+
+        // 9/16 ここからNG==============
+        $updateMemo->update([
+            'memo' => $request->memo,
+        ]);
+
+        return to_route('memo');
     }
 
     //メモ登録画面への遷移
