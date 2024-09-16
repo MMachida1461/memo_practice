@@ -50,10 +50,14 @@ textarea{
 }
 
 
-.edit_button{
+.edit_button, .delete_button{
     text-decoration: none;
     color: black;
     background-color: #287d5f;
     width: 100px;
     padding: 10px;
+}
+
+.delete_button{
+    background-color: rgb(255, 89, 0);
 }

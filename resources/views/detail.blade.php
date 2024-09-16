@@ -11,6 +11,7 @@
 <body>
     {{-- <h1 class="h1">メモ追加</h1> --}}
     <p>{{$memos_detail->memo}}</p>
-    <a href="/memo/detail/edit?id={{$memos_detail->id}}" class="edit_button">編集</a>    
+    <a href="/memo/detail/edit?id={{$memos_detail->id}}" class="edit_button">編集</a>
+    <a href="/memo/detail/delete?id={{$memos_detail->id}}" class="delete_button">削除</a>
 </body>
 </html>

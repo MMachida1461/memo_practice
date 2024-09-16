@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Monolog\Handler\RotatingFileHandler;
 use App\Http\Controllers\MemoController;
+use App\Models\Memo;
 
 //メモ一覧ページに遷移する際のルーティング。MemoContorollerに渡す
 Route::get('/memo', [MemoController::class, 'index'])->name('memo');
@@ -19,3 +20,6 @@ Route::get('/memo/create', [MemoController::class, 'create_view']);
 
 //メモ登録画面で作成ボタンが押された時の処理
 Route::post('/memo/create', [MemoController::class, 'create'])->name('create');
+
+//メモ詳細画面で削除ボタンが押下された時の処理
+Route::get('/memo/detail/delete', [MemoController::class, 'delete']);
