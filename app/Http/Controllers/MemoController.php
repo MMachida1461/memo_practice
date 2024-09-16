@@ -11,17 +11,23 @@ class MemoController extends Controller
 {
     //メモ一覧画面へ遷移させる
     public function index() {
-        $memos = Memo::all();
+        // 1ページあたり10件取るように修正
+        $memos = Memo::paginate(10);
         // var_dump($memos);
         return view('memo')->with('memos',$memos);
     }
 
     ///memo/detailで各メモのidごとにメモの全文を表示するための処理
-    public function getMemo() {
-        //Getでメモのidを取得
-        $memo_id = $_GET["id"];
+    public function getMemo(Request $request) {
+        //queryメソッドを使用し、Requestのidを取得
+        $memo_id = $request->query('id');
         $memo_detail = Memo::find($memo_id);
-        // Log::debug("web.appからメソッドが呼び出されていることを確認");
+        
+        Log::debug($memo_detail);
+        //idのデータがDB上にない時、メモ一覧へ遷移させる
+        if(!$memo_detail){
+            return redirect()->route('memo')->with('error','Memo not fund');
+        }
         return view('detail')->with('memos_detail',$memo_detail->memo);
     }
 
@@ -32,11 +38,15 @@ class MemoController extends Controller
 
     // メモ登録処理
     public function create(Request $request) {
-        $param = [
-            'memo' => $request->memo //formから渡ってきたname=memoの部分
-        ];
-        //insertを使用し、DBに登録
-        DB::insert('insert into memos (memo, created_at, updated_at) values (:memo, NOW(), NOW())', $param);
+        // validateメソッドでmemoの値をチェック
+        $request->validate([
+            'memo' => 'required|max:1000',
+        ]);
+
+        // createメソッドでDBに値を挿入
+        Memo::create([
+            'memo' => $request->memo,
+        ]);
         return to_route('memo');
     }
 }
