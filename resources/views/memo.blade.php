@@ -14,7 +14,19 @@
     <ul>
         @foreach($memos as $memo)
             <li>
-                <a href="/memo/detail?id={{$memo->id}}" value=>{{$memo->memo}}</a>
+                @php
+                    //文字数の上限
+                    $limit = 10;
+                @endphp
+                @if (mb_strlen($memo->memo) > $limit)
+                    @php
+                        $title = mb_substr($memo->memo,0,$limit)
+                    @endphp
+                    <a href="/memo/detail?id={{$memo->id}}" value=>{{ $title.'...' }}</a>    
+                @else
+                    <a href="/memo/detail?id={{$memo->id}}" value=>{{ $memo->memo }}</a>    
+                @endif
+                
             </li>   
         @endforeach
     </ul>
