@@ -22,9 +22,9 @@
                     @php
                         $title = mb_substr($memo->memo,0,$limit)
                     @endphp
-                    <a href="/memo/detail?id={{$memo->id}}" value=>{{ $title.'...' }}</a>    
+                    <a href="/memo/detail?id={{$memo->id}}" >{{ $title.'...' }}</a>    
                 @else
-                    <a href="/memo/detail?id={{$memo->id}}" value=>{{ $memo->memo }}</a>    
+                    <a href="/memo/detail?id={{$memo->id}}" >{{ $memo->memo }}</a>    
                 @endif
                 
             </li>   

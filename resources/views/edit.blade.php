@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- <link rel="stylesheet" href="../css/reset.css"> --}}
     <link rel="stylesheet" href="/css/memo.css">
-    <title>メモ詳細</title>
+    <title>メモ編集</title>
 </head>
 <body>
-    {{-- <h1 class="h1">メモ追加</h1> --}}
-    <p>{{$memos_detail->memo}}</p>
-    <a href="/memo/detail/edit?id={{$memos_detail->id}}" class="edit_button">編集</a>    
+    <p>メモ編集</p>
+    <form action="{{route('create')}}" method="post" class="form-area">
+        @csrf
+        <textarea name="memo" cols="30" rows="10">{{ $memos_edit->memo }}</textarea>
+        <input type="submit" value="更新" id="form-area-submit">
+    </form>
 </body>
 </html>

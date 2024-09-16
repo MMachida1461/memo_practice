@@ -20,6 +20,8 @@ class MemoController extends Controller
     ///memo/detailで各メモのidごとにメモの全文を表示するための処理
     public function getMemo(Request $request) {
         // 意図しない値が入れられないように修正
+
+        Log::debug($request);
         $request->validate([
             'id' => 'required|integer',
         ]);
@@ -28,12 +30,36 @@ class MemoController extends Controller
         $memo_id = $request->query('id');
         $memo_detail = Memo::findOrFail($memo_id);
         
-        Log::debug($memo_detail);
         //idのデータがDB上にない時、メモ一覧へ遷移させる
         if(!$memo_detail){
             return redirect()->route('memo')->with('error','Memo not found');
         }
-        return view('detail')->with('memos_detail',$memo_detail->memo);
+        return view('detail')->with('memos_detail',$memo_detail);
+    }
+
+    //メモ編集画面への遷移
+    public function edit_view(Request $request) {
+
+        // Log::debug($request);
+        // 意図しない値が入れられないように修正
+        $request->validate([
+            'id' => 'required|integer',
+        ]);
+
+        //queryメソッドを使用し、Requestのidを取得
+        $memo_id = $request->query('id');
+        $memo_edit = Memo::findOrFail($memo_id);
+        
+        if(!$memo_edit){
+            return redirect()->route('memo')->with('error','Memo not found');
+        }
+
+        return view('edit')->with('memos_edit',$memo_edit);
+    }
+
+    //メモ更新処理
+    public function update(Request $request){
+        
     }
 
     //メモ登録画面への遷移

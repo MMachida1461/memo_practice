@@ -48,3 +48,12 @@ textarea{
     background-color: darkgray;
     border: 1px #287d5f;
 }
+
+
+.edit_button{
+    text-decoration: none;
+    color: black;
+    background-color: #287d5f;
+    width: 100px;
+    padding: 10px;
+}
