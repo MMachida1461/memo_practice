@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Monolog\Handler\RotatingFileHandler;
 use App\Http\Controllers\MemoController;
+use App\Http\Controllers\UserController;
 use App\Models\Memo;
+use App\Models\User;
 
 //メモ一覧ページに遷移する際のルーティング。MemoContorollerに渡す
 Route::get('/memo', [MemoController::class, 'index'])->name('memo');
@@ -23,3 +25,7 @@ Route::post('/memo/create', [MemoController::class, 'create'])->name('create');
 
 //メモ詳細画面で削除ボタンが押下された時の処理
 Route::get('/memo/detail/delete', [MemoController::class, 'delete']);
+
+//ユーザー登録画面の表示
+Route::get('/users/create',[UserController::class, 'create']);
+Route::post('/users/create',[UserController::class, 'store'])->name('createUser');
