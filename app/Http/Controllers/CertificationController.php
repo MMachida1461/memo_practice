@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\MemoController;
+use Illuminate\Support\Facades\Log;
 
 class CertificationController extends Controller
 {
@@ -15,9 +17,10 @@ class CertificationController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function login()
     {
-        //
+        Log::debug('ここまで');
+        return redirect()->action([MemoController::class, 'index']);
     }
 
     /**

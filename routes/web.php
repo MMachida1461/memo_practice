@@ -34,3 +34,4 @@ Route::post('/users/create',[UserController::class, 'store'])->name('createUser'
 
 //ログイン画面の表示
 Route::get('/login', [CertificationController::class, 'showLogin']);
+Route::post('/login', [CertificationController::class, 'login'])->name('login');
