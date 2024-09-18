@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Monolog\Handler\RotatingFileHandler;
 use App\Http\Controllers\MemoController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CertificationController;
 use App\Models\Memo;
 use App\Models\User;
 
@@ -29,3 +30,7 @@ Route::get('/memo/detail/delete', [MemoController::class, 'delete']);
 //ユーザー登録画面の表示
 Route::get('/users/create',[UserController::class, 'create']);
 Route::post('/users/create',[UserController::class, 'store'])->name('createUser');
+
+
+//ログイン画面の表示
+Route::get('/login', [CertificationController::class, 'showLogin']);
