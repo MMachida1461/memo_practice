@@ -8,24 +8,29 @@ use App\Http\Controllers\CertificationController;
 use App\Models\Memo;
 use App\Models\User;
 
-//メモ一覧ページに遷移する際のルーティング。MemoContorollerに渡す
-Route::get('/memo', [MemoController::class, 'index'])->name('memo');
 
-// メモをDBから取得するページの作成
-Route::get('/memo/detail', [MemoController::class, 'getMemo']);
+Route::prefix('/memos')->name('memos.')->group(function() {
+    //メモ一覧ページに遷移する際のルーティング。MemoContorollerに渡す
+    Route::get('', [MemoController::class, 'index'])->name('index');
 
-Route::get('/memo/detail/edit', [MemoController::class, 'edit_view']);
-//メモ編集画面で更新ボタンが押された時の処理
-Route::post('/memo/detail/edit', [MemoController::class, 'edit'])->name('edit');
+    Route::prefix('/{id}')->group(function() {
+        // メモをDBから取得するページの作成
+        Route::get('', [MemoController::class, 'getMemo'])->name('detail');
+        Route::get('/edit', [MemoController::class, 'edit_view'])->name('edit_view');
 
-//メモ登録画面
-Route::get('/memo/create', [MemoController::class, 'create_view']);
+        //メモ編集画面で更新ボタンが押された時の処理
+        Route::post('/edit', [MemoController::class, 'edit'])->name('edit');
+        //メモ詳細画面で削除ボタンが押下された時の処理
+        Route::get('/delete', [MemoController::class, 'delete'])->name('delete');
+    });
 
-//メモ登録画面で作成ボタンが押された時の処理
-Route::post('/memo/create', [MemoController::class, 'create'])->name('create');
+    //メモ登録画面
+    Route::get('/create', [MemoController::class, 'create_view']);
+    //メモ登録画面で作成ボタンが押された時の処理
+    Route::post('/create', [MemoController::class, 'create'])->name('create');
+});
 
-//メモ詳細画面で削除ボタンが押下された時の処理
-Route::get('/memo/detail/delete', [MemoController::class, 'delete']);
+
 
 //ユーザー登録画面の表示
 Route::get('/users/create',[UserController::class, 'create']);
