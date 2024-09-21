@@ -13,25 +13,12 @@ class MemoController extends Controller
     public function index() {
         // 1ページあたり10件取るように修正
         $memos = Memo::paginate(10);
-        // var_dump($memos);
         return view('memo')->with('memos',$memos);
     }
 
     ///memo/detailで各メモのidごとにメモの全文を表示するための処理
     public function getMemo(Request $request, int $id) {
-        // 意図しない値が入れられないように修正
-        // $request->validate([
-        //     'id' => 'required|integer',
-        // ]);
-
-        //queryメソッドを使用し、Requestのidを取得
-        // $memo_id = $id;
         $memo_detail = Memo::findOrFail($id);
-        
-        //idのデータがDB上にない時、メモ一覧へ遷移させる
-        // if(!$memo_detail){
-        //     return redirect()->route('memo')->with('error','Memo not found');
-        // }
         return view('detail')->with('memos_detail',$memo_detail);
     }
 
@@ -65,9 +52,6 @@ class MemoController extends Controller
         $updateMemo = Memo::find($request->memo_id);  
         Log::debug($updateMemo);
 
-
-
-        // 9/16 ここからNG==============
         $updateMemo->update([
             'memo' => $request->memo,
         ]);
