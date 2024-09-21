@@ -1,0 +1,63 @@
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+a{
+    color: blue;
+}
+
+ul, li{
+    list-style: none;
+}
+
+li{
+    margin-top: 10px;
+}
+
+textarea{
+    height: 500px;
+    width: 500px;
+    display: block;
+
+}
+
+.form-area{
+    position: relative;
+}
+
+#form-area-submit{
+    padding: 20px 40px;
+    color: blue;
+    font-weight: bold;
+    position: absolute;
+    /* top: 550px; */
+    left: 600px;
+    top: 100px;
+}
+
+.memo_create{
+    width: 150px;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    margin-top: 30px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background-color: darkgray;
+    border: 1px #287d5f;
+}
+
+
+.edit_button, .delete_button{
+    text-decoration: none;
+    color: black;
+    background-color: #287d5f;
+    width: 100px;
+    padding: 10px;
+}
+
+.delete_button{
+    background-color: rgb(255, 89, 0);
+}
