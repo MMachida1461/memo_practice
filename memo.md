@@ -1,5 +1,3 @@
-Goal:9/14(土)までにDBの値を取得するだけのメモアプリを作成
-
 設計
 https://docs.google.com/document/d/1M9brVTiB96NaZl76E3V6_rb98VY6N-UpI-pMmGXmiuU/edit?usp=sharing
 
@@ -7,17 +5,23 @@ https://docs.google.com/document/d/1M9brVTiB96NaZl76E3V6_rb98VY6N-UpI-pMmGXmiuU/
 https://docs.google.com/spreadsheets/d/1FAMisA6CYVk76ADXNmi0B-Hflo7-J04Z10rOPYi1YPQ/edit?usp=sharing
 
 
-やること
-　viewの2画面を作成
-　└ localhost/memo にアクセスすると、メモ一覧を表示
-　　 localhost/memo/? ←id　に接続するとメモの詳細を表示
+メモアプリの作成を通して学びたかったこと
 
-　できたこと
-　環境構築
-　gitと繋げる　何度もここで手こずった。慣れないといけない
+・メモ一覧表示
+・メモ詳細表示
+・メモ新規登録
+・メモ変更処理
+・メモ削除処理
 
-参考サイト
-環境構築
-https://zenn.dev/hatopoppo0606/articles/e6511956d594b9
-vscode接続
-https://www.kagoya.jp/howto/rentalserver/webtrend/vscode/
+・ログイン
+・ログアウト　→ まだ実装できていない
+・会員登録
+
+認証とCRUDの実装ができれば、最低限のことはできるから
+抵抗感をなくしたかった。
+
+実際、それ自体は調べながらできた。
+
+もっと改善できるところといえば
+・他の人が見ても読める可読性の高いコード
+を書いていきたい。
