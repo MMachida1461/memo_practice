@@ -7,17 +7,15 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CertificationController;
 use App\Models\Memo;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Log;
 
 Route::prefix('/memos')->name('memos.')->group(function() {
 
     Route::get('', [MemoController::class, 'index'])->name('index');
 
-    Route::prefix('/{id}')->group(function() {
-        // メモをDBから取得するページの作成
-        Route::get('', [MemoController::class, 'getMemo'])->name('detail');
-        Route::get('/edit', [MemoController::class, 'edit_view'])->name('edit_view');
-
+    Route::prefix('/{id}')->name('id.')->group(function() {
+        // メモ編集画面に遷移
+        Route::get('', [MemoController::class, 'edit_view'])->name('edit_view');
         //メモ編集画面で更新ボタンが押された時の処理
         Route::post('/edit', [MemoController::class, 'edit'])->name('edit');
         //メモ詳細画面で削除ボタンが押下された時の処理

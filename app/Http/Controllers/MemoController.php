@@ -16,22 +16,15 @@ class MemoController extends Controller
         return view('memo')->with('memos',$memos);
     }
 
-    ///memo/detailで各メモのidごとにメモの全文を表示するための処理
+    ///memo/{id}で各メモのidごとにメモの全文を表示するための処理
     public function getMemo(Request $request, int $id) {
         $memo_detail = Memo::findOrFail($id);
         return view('detail')->with('memos_detail',$memo_detail);
     }
 
     //メモ編集画面への遷移
-    public function edit_view(Request $request) {
-        // 意図しない値が入れられないように修正
-        $request->validate([
-            'id' => 'required|integer',
-        ]);
-
-        //queryメソッドを使用し、Requestのidを取得
-        $memo_id = $request->query('id');
-        $memo_edit = Memo::findOrFail($memo_id);
+    public function edit_view(Request $request, int $id) {
+        $memo_edit = Memo::findOrFail($id);
         
         if(!$memo_edit){
             return redirect()->route('memo')->with('error','Memo not found');
@@ -43,6 +36,7 @@ class MemoController extends Controller
     //メモ更新処理
     public function edit(Request $request){
 
+        Log::debug('hoge');
         // validateメソッドでmemoの値をチェック
         $request->validate([
             'memo' => 'required|max:1000',

@@ -14,7 +14,7 @@
     <ul>
         @foreach($memos as $memo)
             <li>
-                <a href="{{ route('memos.detail', ['id' => $memo->id]) }}" >{{ $memo->display_title }}</a> 
+                <a href="{{ route('memos.id.edit_view', ['id' => $memo->id]) }}" >{{ $memo->display_title }}</a> 
             </li>   
         @endforeach
     </ul>
