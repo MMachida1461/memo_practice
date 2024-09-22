@@ -32,7 +32,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ]);
-        return view('users.create');
+        return redirect()->route('login.showLogin');
     }
 
     /**

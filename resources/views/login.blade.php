@@ -26,5 +26,6 @@
         </ul>
         <input type="submit" value="ログイン">
     </form>
+    <a href="{{route('users.create')}}"><input type="submit" value="新規作成"></a>
 </body>
 </html>
