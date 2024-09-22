@@ -40,7 +40,7 @@ class MemoController extends Controller
         $updateMemo->update([
             'memo' => $request->memo,
         ]);
-        
+
         return $this->index();
     }
 
@@ -63,24 +63,10 @@ class MemoController extends Controller
         return to_route('memo');
     }
     // メモ削除処理
-    public function delete(Request $request){
-        // 意図しない値が入れられないように修正
-        $request->validate([
-            'id' => 'required|integer',
-        ]);
-
-
-        //queryメソッドを使用し、Requestのidを取得
-        $memo_id = $request->query('id');
-        $memo_delete = Memo::findOrFail($memo_id);
-        
-        //idのデータがDB上にない時、メモ一覧へ遷移させる
-        if(!$memo_delete){
-            return redirect()->route('memo')->with('error','Memo not found');
-        }
-
-        //この行でDBの値を削除
+    public function delete(Request $request, int $id){
+        $memo_delete = Memo::findOrFail($id);
         $memo_delete->delete();
-        return to_route('memo');
+        
+        return $this->index();
     }
 }
