@@ -16,12 +16,6 @@ class MemoController extends Controller
         return view('memo')->with('memos',$memos);
     }
 
-    ///memo/{id}で各メモのidごとにメモの全文を表示するための処理
-    public function getMemo(Request $request, int $id) {
-        $memo_detail = Memo::findOrFail($id);
-        return view('detail')->with('memos_detail',$memo_detail);
-    }
-
     //メモ編集画面への遷移
     public function edit_view(Request $request, int $id) {
         $memo_edit = Memo::findOrFail($id);
