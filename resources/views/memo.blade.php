@@ -19,6 +19,6 @@
         @endforeach
     </ul>
 
-    <a href="/memo/create" class="memo_create">メモを新規作成</a>
+    <a href="{{ route('memos.create_view') }}" class="memo_create">メモを新規作成</a>
 </body>
 </html>

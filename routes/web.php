@@ -13,6 +13,13 @@ Route::prefix('/memos')->name('memos.')->group(function() {
 
     Route::get('', [MemoController::class, 'index'])->name('index');
 
+    Route::prefix('/create')->name('create')->group(function(){
+        //メモ登録画面
+        Route::get('', [MemoController::class, 'create_view'])->name('create_view');
+        //メモ登録画面で作成ボタンが押された時の処理
+        Route::post('', [MemoController::class, 'create'])->name('create');
+    });
+
     Route::prefix('/{id}')->name('id.')->group(function() {
         // メモ編集画面に遷移
         Route::get('', [MemoController::class, 'edit_view'])->name('edit_view');
@@ -21,11 +28,6 @@ Route::prefix('/memos')->name('memos.')->group(function() {
         //メモ詳細画面で削除ボタンが押下された時の処理
         Route::get('/delete', [MemoController::class, 'delete'])->name('delete');
     });
-
-    //メモ登録画面
-    Route::get('/create', [MemoController::class, 'create_view'])->name('create_view');
-    //メモ登録画面で作成ボタンが押された時の処理
-    Route::post('/create', [MemoController::class, 'create'])->name('create');
 });
 
 
