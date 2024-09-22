@@ -16,10 +16,10 @@ li{
 }
 
 textarea{
+    border: 2px solid #434343;  /* 枠線 */
     height: 500px;
     width: 500px;
     display: block;
-
 }
 
 .form-area{
@@ -49,15 +49,27 @@ textarea{
     border: 1px #287d5f;
 }
 
-
+.main{
+    position: relative;
+}
 .edit_button, .delete_button{
+    display: block;
     text-decoration: none;
-    color: black;
-    background-color: #287d5f;
+    text-align: center;
+    font-weight: bold;
+    background-color: #c6c5c5;
+    border-radius: 2px;
     width: 100px;
-    padding: 10px;
+    position: absolute;
+    left: 550px;
+}
+
+.edit_button{
+    top: 50px;
+    color: blue;
 }
 
 .delete_button{
-    background-color: rgb(255, 89, 0);
+    top: 120px;
+    color: red;
 }

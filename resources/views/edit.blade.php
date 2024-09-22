@@ -10,13 +10,15 @@
 </head>
 <body>
     <p>メモ編集</p>
-    <form action="{{ route('memos.id.edit', ['id' => $memos_edit->id]) }}" method="post" class="form-area">
-        @csrf
-        <textarea name="memo" cols="30" rows="10">{{ $memos_edit->memo }}</textarea>
-        <input type="hidden" name="memo_id" value="{{ $memos_edit->id }}">
-        <input type="submit" value="更新" class="edit_button">
-    </form>
-    
-    <a href="{{route('memos.id.delete', ['id' => $memos_edit->id]) }}" class="delete_button">削除</a>
+    <div class="main"></div>
+        <form action="{{ route('memos.id.edit', ['id' => $memos_edit->id]) }}" method="post" class="form-area">
+            @csrf
+            <textarea name="memo" cols="30" rows="10">{{ $memos_edit->memo }}</textarea>
+            <input type="hidden" name="memo_id" value="{{ $memos_edit->id }}">
+            <input type="submit" value="更新" class="edit_button">
+        </form>
+        
+        <a href="{{route('memos.id.delete', ['id' => $memos_edit->id]) }}" class="delete_button">削除</a>
+    </div>
 </body>
 </html>
