@@ -13,12 +13,12 @@ Route::prefix('/memos')->name('memos.')->group(function() {
 
     Route::get('', [MemoController::class, 'index'])->name('index');
 
-    Route::prefix('/create')->name('create')->group(function(){
-        //メモ登録画面
-        Route::get('', [MemoController::class, 'create_view'])->name('create_view');
-        //メモ登録画面で作成ボタンが押された時の処理
-        Route::post('', [MemoController::class, 'create'])->name('create');
-    });
+    // createはview側でmemos.create.createとなるためグループ化しない
+    //メモ登録画面
+    Route::get('create', [MemoController::class, 'create_view'])->name('create_view');
+    //メモ登録画面で作成ボタンが押された時の処理
+    Route::post('create', [MemoController::class, 'create'])->name('create');
+
 
     Route::prefix('/{id}')->name('id.')->group(function() {
         // メモ編集画面に遷移

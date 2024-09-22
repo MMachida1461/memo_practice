@@ -10,10 +10,10 @@
 </head>
 <body>
     <h1>メモ追加</h1>
-    <form action="{{route('create')}}" method="post" class="form-area">
+    <form action="{{route('memos.create')}}" method="post" class="form-area">
         @csrf
         <textarea name="memo" cols="30" rows="10"></textarea>
-        <input type="submit" value="作成" id="form-area-submit">
+        <input type="submit" value="作成" class="create_button">
     </form>
 </body>
 </html>

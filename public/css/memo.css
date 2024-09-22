@@ -52,7 +52,7 @@ textarea{
 .main{
     position: relative;
 }
-.edit_button, .delete_button{
+.edit_button, .delete_button, .create_button{
     display: block;
     text-decoration: none;
     text-align: center;
@@ -64,7 +64,7 @@ textarea{
     left: 550px;
 }
 
-.edit_button{
+.edit_button, .create_button{
     top: 50px;
     color: blue;
 }

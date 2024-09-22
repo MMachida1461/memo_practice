@@ -12,8 +12,7 @@ class MemoController extends Controller
     //メモ一覧画面へ遷移させる
     public function index() {
         // 1ページあたり10件取るように修正
-        $memos = Memo::paginate(10);
-
+        $memos = Memo::all();
         return view('memo')->with('memos',$memos);
     }
 
@@ -40,8 +39,7 @@ class MemoController extends Controller
         $updateMemo->update([
             'memo' => $request->memo,
         ]);
-
-        return $this->index();
+        return redirect()->route('memos.index');
     }
 
     //メモ登録画面への遷移
@@ -51,6 +49,7 @@ class MemoController extends Controller
 
     // メモ登録処理
     public function create(Request $request) {
+        Log::debug('memos');
         // validateメソッドでmemoの値をチェック
         $request->validate([
             'memo' => 'required|max:1000',
@@ -60,13 +59,14 @@ class MemoController extends Controller
         Memo::create([
             'memo' => $request->memo,
         ]);
-        return to_route('memo');
+        return redirect()->route('memos.index');
+
     }
     // メモ削除処理
     public function delete(Request $request, int $id){
         $memo_delete = Memo::findOrFail($id);
         $memo_delete->delete();
         
-        return $this->index();
+        return redirect()->route('memos.index');
     }
 }
