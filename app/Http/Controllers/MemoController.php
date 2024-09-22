@@ -13,6 +13,7 @@ class MemoController extends Controller
     public function index() {
         // 1ページあたり10件取るように修正
         $memos = Memo::paginate(10);
+
         return view('memo')->with('memos',$memos);
     }
 
@@ -29,8 +30,6 @@ class MemoController extends Controller
 
     //メモ更新処理
     public function edit(Request $request){
-
-        Log::debug('hoge');
         // validateメソッドでmemoの値をチェック
         $request->validate([
             'memo' => 'required|max:1000',
@@ -38,13 +37,11 @@ class MemoController extends Controller
 
         // updateメソッドでDBに値を挿入
         $updateMemo = Memo::find($request->memo_id);  
-        Log::debug($updateMemo);
-
         $updateMemo->update([
             'memo' => $request->memo,
         ]);
-
-        return to_route('memo');
+        
+        return $this->index();
     }
 
     //メモ登録画面への遷移
