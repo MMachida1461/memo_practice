@@ -77,3 +77,8 @@ textarea{
     top: 120px;
     color: red;
 }
+
+.error_message{
+    font-weight: bold;
+    color: tomato;
+}

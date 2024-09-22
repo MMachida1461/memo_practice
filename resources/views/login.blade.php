@@ -9,6 +9,11 @@
     <title>ログイン</title>
 </head>
 <body>
+    @if (session('error'))
+    <p class="error_message">
+      {{ session('error') }}
+    </p>
+  @endif
     <form action="{{route('login.showLogin')}}" method="post">
         @csrf
         <ul>
