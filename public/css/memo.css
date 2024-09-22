@@ -15,8 +15,12 @@ li{
     margin-top: 10px;
 }
 
+input{
+    border: 2px solid #434343;
+}
+
 textarea{
-    border: 2px solid #434343;  /* 枠線 */
+    border: 2px solid #434343;
     height: 500px;
     width: 500px;
     display: block;

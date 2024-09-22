@@ -9,7 +9,7 @@
     <title>ユーザー登録</title>
 </head>
 <body>
-    <form action="{{route('createUser')}}" method="post">
+    <form action="{{route('users.createUser')}}" method="post">
         @csrf
         <ul>
             <Li>名前</Li>

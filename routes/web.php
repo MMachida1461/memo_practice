@@ -30,13 +30,13 @@ Route::prefix('/memos')->name('memos.')->group(function() {
     });
 });
 
+Route::prefix('/users')->name('users.')->group(function() {
+    //ユーザー登録画面の表示
+    Route::get('/create',[UserController::class, 'create'])->name('create');
+    Route::post('/create',[UserController::class, 'store'])->name('createUser');
+});
 
 
-//ユーザー登録画面の表示
-Route::get('/users/create',[UserController::class, 'create'])->name('create');
-Route::post('/users/create',[UserController::class, 'store'])->name('createUser');
-
-
-//ログイン画面の表示
-Route::get('/login', [CertificationController::class, 'showLogin'])->name('showLogin');
-Route::post('/login', [CertificationController::class, 'login'])->name('login');
+    //ログイン画面の表示
+    Route::get('/login', [CertificationController::class, 'showLogin'])->name('showLogin');
+    Route::post('/login', [CertificationController::class, 'login'])->name('login');
