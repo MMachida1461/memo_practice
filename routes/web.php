@@ -36,7 +36,8 @@ Route::prefix('/users')->name('users.')->group(function() {
     Route::post('/create',[UserController::class, 'store'])->name('createUser');
 });
 
-
+Route::prefix('/login')->name('login.')->group(function() {
     //ログイン画面の表示
-    Route::get('/login', [CertificationController::class, 'showLogin'])->name('showLogin');
-    Route::post('/login', [CertificationController::class, 'login'])->name('login');
+    Route::get('', [CertificationController::class, 'showLogin'])->name('showLogin');
+    Route::post('', [CertificationController::class, 'login'])->name('login');
+});

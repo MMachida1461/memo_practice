@@ -9,7 +9,7 @@
     <title>ログイン</title>
 </head>
 <body>
-    <form action="{{route('login')}}" method="post">
+    <form action="{{route('login.showLogin')}}" method="post">
         @csrf
         <ul>
             <Li>メールアドレス</Li>
