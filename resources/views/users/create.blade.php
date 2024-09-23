@@ -23,11 +23,6 @@
             <Li>パスワード</Li>
             <Li><input type="password" name="password"></Li>
         </ul>
-
-        {{-- <ul>
-            <Li>パスワード確認</Li>
-            <Li><input type="password" name="confirm_password"></Li>
-        </ul> --}}
         <input type="submit" value="登録">
     </form>
 </body>
