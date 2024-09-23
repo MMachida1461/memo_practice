@@ -40,7 +40,7 @@ textarea{
     top: 100px;
 }
 
-.memo_create{
+.memo_create, .logout{
     width: 150px;
     display: block;
     text-align: center;

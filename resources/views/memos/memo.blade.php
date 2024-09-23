@@ -20,5 +20,7 @@
     </ul>
 
     <a href="{{ route('memos.create_view') }}" class="memo_create">メモを新規作成</a>
+    <a href="{{ route('logout') }}" class="logout">ログアウト</a>
+
 </body>
 </html>

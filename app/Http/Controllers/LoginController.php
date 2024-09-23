@@ -29,4 +29,8 @@ class LoginController extends Controller
         
         return redirect()->route('login.showLogin')->with('error', 'メールアドレス、またはパスワードが違います');
     }
+
+    public function logout(Request $request) {
+        return view('memos.login');
+    }
 }

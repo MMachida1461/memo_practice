@@ -32,3 +32,5 @@ Route::prefix('/login')->name('login.')->group(function() {
     Route::get('', [LoginController::class, 'showLogin'])->name('showLogin');
     Route::post('', [LoginController::class, 'login'])->name('login');
 });
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
