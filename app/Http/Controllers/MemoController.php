@@ -22,15 +22,13 @@ class MemoController extends Controller
     }
 
     //メモ更新処理
-    public function edit(Request $request){
+    public function edit(Request $request, int $id){
         $request->validate([
             'memo' => 'required|max:1000',
         ]);
 
-        $updateMemo = Memo::find($request->memo_id);  
-        $updateMemo->update([
-            'memo' => $request->memo,
-        ]);
+        $updateMemo = Memo::find($id);
+        $updateMemo->fill($request->all())->save();
         return redirect()->route('memos.index');
     }
 
@@ -44,10 +42,9 @@ class MemoController extends Controller
         $request->validate([
             'memo' => 'required|max:1000',
         ]);
-
-        Memo::create([
-            'memo' => $request->memo,
-        ]);
+        
+        $createMemo = new Memo();
+        $createMemo->fill($request->all())->save();
         return redirect()->route('memos.index');
 
     }
