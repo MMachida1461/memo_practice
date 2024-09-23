@@ -53,8 +53,7 @@ class MemoController extends Controller
     }
     // メモ削除処理
     public function delete(Request $request, int $id){
-        $memo_delete = Memo::findOrFail($id);
-        $memo_delete->delete();
+        Memo::destroy($id);
         
         return redirect()->route('memos.index');
     }
