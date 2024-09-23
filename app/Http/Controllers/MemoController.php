@@ -48,7 +48,7 @@ class MemoController extends Controller
     }
 
     // メモ登録処理
-    public function create(Request $request) {
+    public function store(Request $request) {
         // validateメソッドでmemoの値をチェック
         $request->validate([
             'memo' => 'required|max:1000',
