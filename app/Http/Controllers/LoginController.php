@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     //ログイン画面の表示
     public function showLogin() {
-        return view('login');
+        return view('memos.login');
     }
 
     /**

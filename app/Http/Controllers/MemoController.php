@@ -12,13 +12,13 @@ class MemoController extends Controller
     //メモ一覧画面へ遷移させる
     public function index() {
         $memos = Memo::all();
-        return view('memo')->with('memos',$memos);
+        return view('memos.memo')->with('memos',$memos);
     }
 
     //メモ編集画面への遷移
     public function edit_view(Request $request, int $id) {
         $memo_edit = Memo::findOrFail($id);
-        return view('edit')->with('memos_edit',$memo_edit);
+        return view('memos.edit')->with('memos_edit',$memo_edit);
     }
 
     //メモ更新処理
@@ -34,7 +34,7 @@ class MemoController extends Controller
 
     //メモ登録画面への遷移
     public function create_view() {
-        return view('create');
+        return view('memos.create');
     }
 
     // メモ登録処理
@@ -42,7 +42,7 @@ class MemoController extends Controller
         $request->validate([
             'memo' => 'required|max:1000',
         ]);
-        
+
         $createMemo = new Memo();
         $createMemo->fill($request->all())->save();
         return redirect()->route('memos.index');
