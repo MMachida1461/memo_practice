@@ -10,10 +10,10 @@
 </head>
 <body>
     <p>メモ編集</p>
-    <div class="main"></div>
+    <div class="main">
         <form action="{{ route('memos.id.edit', ['id' => $memos_edit->id]) }}" method="post" class="form-area">
             @csrf
-            <textarea name="memo" cols="30" rows="10">{{ $memos_edit->memo }}</textarea>
+            <textarea name="memo" cols="30" rows="10">{{ old('memo', $memos_edit->memo) }}</textarea>
             <input type="hidden" name="memo_id" value="{{ $memos_edit->id }}">
             <input type="submit" value="更新" class="edit_button">
         </form>
