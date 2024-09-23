@@ -18,11 +18,6 @@ class MemoController extends Controller
     //メモ編集画面への遷移
     public function edit_view(Request $request, int $id) {
         $memo_edit = Memo::findOrFail($id);
-        
-        if(!$memo_edit){
-            return redirect()->route('memo')->with('error','Memo not found');
-        }
-
         return view('edit')->with('memos_edit',$memo_edit);
     }
 
