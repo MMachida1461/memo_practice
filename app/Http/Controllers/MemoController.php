@@ -49,7 +49,6 @@ class MemoController extends Controller
 
     // メモ登録処理
     public function create(Request $request) {
-        Log::debug('memos');
         // validateメソッドでmemoの値をチェック
         $request->validate([
             'memo' => 'required|max:1000',

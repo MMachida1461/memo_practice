@@ -17,8 +17,10 @@
             <input type="hidden" name="memo_id" value="{{ $memos_edit->id }}">
             <input type="submit" value="更新" class="edit_button">
         </form>
-        
-        <a href="{{route('memos.id.delete', ['id' => $memos_edit->id]) }}" class="delete_button">削除</a>
+        <form action="{{route('memos.id.delete', ['id' => $memos_edit->id]) }}" method="post" class="delete_button">
+            @csrf
+            <input type="submit" value="削除" class="">
+        </form>
     </div>
 </body>
 </html>

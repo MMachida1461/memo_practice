@@ -26,7 +26,7 @@ Route::prefix('/memos')->name('memos.')->group(function() {
         //メモ編集画面で更新ボタンが押された時の処理
         Route::post('/edit', [MemoController::class, 'edit'])->name('edit');
         //メモ詳細画面で削除ボタンが押下された時の処理
-        Route::get('/delete', [MemoController::class, 'delete'])->name('delete');
+        Route::post('/delete', [MemoController::class, 'delete'])->name('delete');
     });
 });
 
