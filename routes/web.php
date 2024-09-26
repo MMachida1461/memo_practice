@@ -4,34 +4,33 @@ use Illuminate\Support\Facades\Route;
 use Monolog\Handler\RotatingFileHandler;
 use App\Http\Controllers\MemoController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CertificationController;
+use App\Http\Controllers\LoginController;
 use App\Models\Memo;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
-//メモ一覧ページに遷移する際のルーティング。MemoContorollerに渡す
-Route::get('/memo', [MemoController::class, 'index'])->name('memo');
+Route::prefix('/memos')->name('memos.')->group(function() {
 
-// メモをDBから取得するページの作成
-Route::get('/memo/detail', [MemoController::class, 'getMemo']);
-
-Route::get('/memo/detail/edit', [MemoController::class, 'edit_view']);
-//メモ編集画面で更新ボタンが押された時の処理
-Route::post('/memo/detail/edit', [MemoController::class, 'edit'])->name('edit');
-
-//メモ登録画面
-Route::get('/memo/create', [MemoController::class, 'create_view']);
-
-//メモ登録画面で作成ボタンが押された時の処理
-Route::post('/memo/create', [MemoController::class, 'create'])->name('create');
-
-//メモ詳細画面で削除ボタンが押下された時の処理
-Route::get('/memo/detail/delete', [MemoController::class, 'delete']);
-
-//ユーザー登録画面の表示
-Route::get('/users/create',[UserController::class, 'create']);
-Route::post('/users/create',[UserController::class, 'store'])->name('createUser');
+    Route::get('', [MemoController::class, 'index'])->name('index');
+    Route::get('create', [MemoController::class, 'create_view'])->name('create_view');
+    Route::post('create', [MemoController::class, 'store'])->name('create');
 
 
-//ログイン画面の表示
-Route::get('/login', [CertificationController::class, 'showLogin']);
-Route::post('/login', [CertificationController::class, 'login'])->name('login');
+    Route::prefix('/{id}')->name('id.')->group(function() {
+        Route::get('', [MemoController::class, 'edit_view'])->name('edit_view');
+        Route::post('/edit', [MemoController::class, 'edit'])->name('edit');
+        Route::post('/delete', [MemoController::class, 'delete'])->name('delete');
+    });
+});
+
+Route::prefix('/users')->name('users.')->group(function() {
+    Route::get('/create',[UserController::class, 'create'])->name('create');
+    Route::post('/create',[UserController::class, 'store'])->name('createUser');
+});
+
+Route::prefix('/login')->name('login.')->group(function() {
+    Route::get('', [LoginController::class, 'showLogin'])->name('showLogin');
+    Route::post('', [LoginController::class, 'login'])->name('login');
+});
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

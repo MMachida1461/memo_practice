@@ -15,11 +15,15 @@ li{
     margin-top: 10px;
 }
 
+input{
+    border: 2px solid #434343;
+}
+
 textarea{
+    border: 2px solid #434343;
     height: 500px;
     width: 500px;
     display: block;
-
 }
 
 .form-area{
@@ -36,7 +40,7 @@ textarea{
     top: 100px;
 }
 
-.memo_create{
+.memo_create, .logout{
     width: 150px;
     display: block;
     text-align: center;
@@ -49,15 +53,38 @@ textarea{
     border: 1px #287d5f;
 }
 
-
-.edit_button, .delete_button{
+.main{
+    position: relative;
+}
+.edit_button, .delete_button, .create_button{
+    display: block;
     text-decoration: none;
-    color: black;
-    background-color: #287d5f;
+    text-align: center;
+    font-weight: bold;
+    background-color: #c6c5c5;
+    border: none;
+    border-radius: 2px;
     width: 100px;
-    padding: 10px;
+    position: absolute;
+    left: 550px;
+}
+
+.edit_button, .create_button{
+    top: 50px;
+    color: blue;
 }
 
 .delete_button{
-    background-color: rgb(255, 89, 0);
+    top: 120px;
+    color: red;
+}
+
+.delete_button input{
+    border: none;
+    width: 100%;
+}
+
+.error_message{
+    font-weight: bold;
+    color: tomato;
 }

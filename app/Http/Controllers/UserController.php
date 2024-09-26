@@ -23,10 +23,7 @@ class UserController extends Controller
     }
 
     //ユーザー登録処理
-    public function store(Request $request)
-    {
-        Log::debug($request);
-        // storeメソッドでDBに値を挿入
+    public function store(Request $request) {
         User::create([
             'name' => $request->name,
             'email' => $request->email,
