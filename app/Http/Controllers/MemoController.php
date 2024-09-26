@@ -43,11 +43,13 @@ class MemoController extends Controller
             'memo' => 'required|max:1000',
         ]);
 
-        $createMemo = new Memo();
-        $createMemo->fill($request->all())->save();
+        // createメソッドでDBに値を挿入
+        Memo::create([
+            'memo' => $request->memo,
+        ]);
         return redirect()->route('memos.index');
-
     }
+
     // メモ削除処理
     public function delete(Request $request, int $id){
         Memo::destroy($id);

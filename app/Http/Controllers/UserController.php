@@ -23,11 +23,13 @@ class UserController extends Controller
     }
 
     //ユーザー登録処理
-    public function store(Request $request)
-    {
-        $createUser = new User();
-        $createUser->fill($request->all())->save();
-        return redirect()->route('login.showLogin');
+    public function store(Request $request) {
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+        return view('users.create');
     }
 
     /**
